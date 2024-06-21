@@ -1,0 +1,30 @@
+[
+    {
+        "name": "TEST_0",
+        "thmunail_url": "http://yorozuya-kagura.com/wp-content/uploads/2024/06/スクリーンショット-2024-06-13-13.37.21.png",
+        "description": "これは説明です",
+        "address": "東京都墨田区向島",
+        "phone": "0120-000-000"
+    },
+    {
+        "name": "TEST_1",
+        "thmunail_url": "http://yorozuya-kagura.com/wp-content/uploads/2024/06/スクリーンショット-2024-06-13-13.37.21.png",
+        "description": "これは説明です",
+        "address": "東京都墨田区向島",
+        "phone": "0120-000-001"
+    },
+    {
+        "name": "TEST_2",
+        "thmunail_url": "http://yorozuya-kagura.com/wp-content/uploads/2024/06/スクリーンショット-2024-06-13-13.37.21.png",
+        "description": "これは説明です",
+        "address": "東京都墨田区向島",
+        "phone": "0120-000-001"
+    },
+    {
+        "name": "TEST_3",
+        "thmunail_url": "http://yorozuya-kagura.com/wp-content/uploads/2024/06/スクリーンショット-2024-06-13-13.37.21.png",
+        "description": "これは説明です",
+        "address": "東京都墨田区向島",
+        "phone": "0120-000-001"
+    }
+]

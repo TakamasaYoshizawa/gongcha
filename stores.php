@@ -1,5 +1,5 @@
 <?php
-
+// これはコメントです
 $json_file_path = './stores.json';
 $stores_json = file_get_contents($json_file_path);
 

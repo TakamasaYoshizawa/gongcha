@@ -3,32 +3,22 @@
 $json_file_path = './stores.json';
 $stores_json = file_get_contents($json_file_path);
 
-// if ($stores_json === false) {
-//     die('Error: Unable to read the JSON file.');
-// }
-
 $stores = json_decode($stores_json, true);
 
-// if ($stores === null && json_last_error() !== JSON_ERROR_NONE) {
-//     die('Error: JSON decoding failed. ' . json_last_error_msg());
-// }
-
-if (is_array($stores)){
-for($i = 0; $i < count($stores); $i++){
+foreach($stores as $store){
     print<<<EOT
-
-     <div class="col-sm-6">
+        <div class="col-sm-6">
             <div class="shop-list-search">
                 <div class="shop-list-inner">
                     <a href="">
-                        <h3 class="shop-list-name">{$stores[$i]["name"]}</h3>
+                        <h3 class="shop-list-name">{$store["name"]}</h3>
                         <div class="shop-list-image">
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="{$stores[$i]["thmunail_url"]}">
+                                    <img src="{$store["thmunail_url"]}">
                                 </div>
                                 <div class="col-xs-8">
-                                    <p>{$stores[$i]["description"]}</p>
+                                    <p>{$store["description"]}</p>
                                     "とっても素晴らしい銀座のお店！"
                                 </div>
                             </div>
@@ -53,7 +43,7 @@ for($i = 0; $i < count($stores); $i++){
                                 </tr>
                                 <tr>
                                     <th>勤務時間</th>
-                                    <td>20:00〜1:00</td>
+                                    <td>{$store["phone"]}</td>
                                 </tr>
                                 <tr>
                                     <th>職種</th>
@@ -98,26 +88,25 @@ for($i = 0; $i < count($stores); $i++){
         </div>
 
     EOT;
+
 }
-}
 
-
-
-
-// foreach($stores as $store){
+// if (is_array($stores)){
+// for($i = 0; $i < count($stores); $i++){
 //     print<<<EOT
-//         <div class="col-sm-6">
+
+//      <div class="col-sm-6">
 //             <div class="shop-list-search">
 //                 <div class="shop-list-inner">
 //                     <a href="">
-//                         <h3 class="shop-list-name">{$store["name"]}</h3>
+//                         <h3 class="shop-list-name">{$stores[$i]["name"]}</h3>
 //                         <div class="shop-list-image">
 //                             <div class="row">
 //                                 <div class="col-xs-4">
-//                                     <img src="{$store["thmunail_url"]}">
+//                                     <img src="{$stores[$i]["thmunail_url"]}">
 //                                 </div>
 //                                 <div class="col-xs-8">
-//                                     <p>{$store["description"]}</p>
+//                                     <p>{$stores[$i]["description"]}</p>
 //                                     "とっても素晴らしい銀座のお店！"
 //                                 </div>
 //                             </div>
@@ -187,8 +176,12 @@ for($i = 0; $i < count($stores); $i++){
 //         </div>
 
 //     EOT;
-
 // }
+// }
+
+
+
+
 
 
 

@@ -6,6 +6,13 @@ add_editor_style();
 
 //以下に子テーマ用の関数を書く
 
+function add_custom_scripts() {
+  // JavaScriptファイルを読み込む
+  wp_enqueue_script('custom-script', get_template_directory_uri() . 'js/javascript.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'add_custom_scripts');
+
+
 function tag_echo_php( $atts ){
   ob_start();
   get_template_part('get_tag_name'); 
@@ -22,7 +29,7 @@ add_shortcode( 'TAG_NAME', 'tag_echo_php' );
 // }
 // add_shortcode('stores', 'expand_stores_html');
 
-// GPT記載のコード１ 
+// GPT記載のコード１ ->sc_testと同じ内容を出力する。
 
 function expand_stores_html() {
   // 出力バッファリングを開始
@@ -46,3 +53,12 @@ function expand_stores_html() {
 
 // ショートコードを追加
 add_shortcode('stores', 'expand_stores_html');
+
+function shortcode_test(){
+  
+  ob_start();
+    $data = get_stylesheet_directory() . '/stores.php';
+    include $data;
+  return ob_get_clean();
+  }
+  add_shortcode('sc_test', 'shortcode_test');

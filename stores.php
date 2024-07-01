@@ -1,25 +1,37 @@
 <?php
-// これはコメントです！
-$json_file_path = './stores.json';
-$stores_json = file_get_contents($json_file_path);
+global $wpdb;
+// echo "Start fetching data"; // ここで実行確認
+$get_data = $wpdb->get_results('SELECT * FROM wp_gongcha ORDER BY id ASC');
 
-$stores = json_decode($stores_json, true);
+// echo "Fetched data count: " . count($get_data); // 取得データの数を表示
 
-foreach($stores as $store){
-    print<<<EOT
-        <div class="col-sm-6">
+// コンテナ開始
+echo '<div class="container">';
+echo '<div class="row">';
+
+$count = 0;
+
+foreach ($get_data as $data) {
+    // 新しい行の開始
+    if ($count > 0 && $count % 2 == 0) {
+        echo '</div><div class="row">';
+    }
+
+    // echo "Processing data: " . $data->name; // 各データの処理開始を表示
+
+    print <<<EOT
+        <div class="col-sm-6 d-flex">
             <div class="shop-list-search">
                 <div class="shop-list-inner">
-                    <a href="">
-                        <h3 class="shop-list-name">{$store["name"]}</h3>
+                    <a href="$data->link">
+                        <h3 class="shop-list-name">$data->name</h3>
                         <div class="shop-list-image">
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="{$store["thmunail_url"]}">
+                                    <img src="$data->img">
                                 </div>
                                 <div class="col-xs-8">
-                                    <p>{$store["description"]}</p>
-                                    "とっても素晴らしい銀座のお店！"
+                                    <p>$data->description</p>
                                 </div>
                             </div>
                         </div>
@@ -27,27 +39,27 @@ foreach($stores as $store){
                             <tbody>
                                 <tr>
                                     <th>業種</th>
-                                    <td>キャバクラ</td>
+                                    <td>$data->business</td>
                                 </tr>
                                 <tr>
                                     <th>時給</th>
-                                    <td>時給8,000円〜12,000円</td>
+                                    <td>$data->salary</td>
                                 </tr>
                                 <tr>
                                     <th>エリア</th>
-                                    <td>銀座</td>
+                                    <td>$data->area</td>
                                 </tr>
                                 <tr>
                                     <th>アクセス</th>
-                                    <td>銀座線「新橋駅」５番出口徒歩5分</td>
+                                    <td>$data->access</td>
                                 </tr>
                                 <tr>
                                     <th>勤務時間</th>
-                                    <td>{$store["phone"]}</td>
+                                    <td>$data->op_time</td>
                                 </tr>
                                 <tr>
                                     <th>職種</th>
-                                    <td>日払いOKのフロアレディー</td>
+                                    <td>$data->occupation</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,102 +98,12 @@ foreach($stores as $store){
                 </div>
             </div>
         </div>
-
     EOT;
 
+    $count++;
 }
 
-// if (is_array($stores)){
-// for($i = 0; $i < count($stores); $i++){
-//     print<<<EOT
-
-//      <div class="col-sm-6">
-//             <div class="shop-list-search">
-//                 <div class="shop-list-inner">
-//                     <a href="">
-//                         <h3 class="shop-list-name">{$stores[$i]["name"]}</h3>
-//                         <div class="shop-list-image">
-//                             <div class="row">
-//                                 <div class="col-xs-4">
-//                                     <img src="{$stores[$i]["thmunail_url"]}">
-//                                 </div>
-//                                 <div class="col-xs-8">
-//                                     <p>{$stores[$i]["description"]}</p>
-//                                     "とっても素晴らしい銀座のお店！"
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <table class="s-l-t">
-//                             <tbody>
-//                                 <tr>
-//                                     <th>業種</th>
-//                                     <td>キャバクラ</td>
-//                                 </tr>
-//                                 <tr>
-//                                     <th>時給</th>
-//                                     <td>時給8,000円〜12,000円</td>
-//                                 </tr>
-//                                 <tr>
-//                                     <th>エリア</th>
-//                                     <td>銀座</td>
-//                                 </tr>
-//                                 <tr>
-//                                     <th>アクセス</th>
-//                                     <td>銀座線「新橋駅」５番出口徒歩5分</td>
-//                                 </tr>
-//                                 <tr>
-//                                     <th>勤務時間</th>
-//                                     <td>20:00〜1:00</td>
-//                                 </tr>
-//                                 <tr>
-//                                     <th>職種</th>
-//                                     <td>日払いOKのフロアレディー</td>
-//                                 </tr>
-//                             </tbody>
-//                         </table>
-//                         <h4 class="t_list">メリット</h4>
-//                         <div class="m_tag_list">
-//                             <ul>
-//                                 <li>未経験者大歓迎</li>
-//                                 <li>終電上がり</li>
-//                                 <li>送り有り</li>
-//                                 <li>土曜も営業</li>
-//                             </ul>
-//                         </div>
-//                     </a>
-//                     <div class="row">
-//                         <div class="col-xs-6 keepbtn">
-//                             <div class="keep_btn_a">
-//                                 <a href="">
-//                                     <!-- キープの星の画像の箇所 -->
-//                                     <img src="">
-//                                     ▶︎キープする
-//                                 </a>
-//                             </div>
-//                         </div>
-//                         <div class="col-xs-6">
-//                             <div class="keep_btn_a">
-//                                 <a href="">
-//                                     ▶︎詳しく見る
-//                                     <picture>
-//                                         <source type="">
-//                                         <img src="">
-//                                     </picture>
-//                                 </a>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-
-//     EOT;
-// }
-// }
-
-
-
-
-
-
-
+// 最後の行を閉じる
+echo '</div>';
+echo '</div>';
+?>

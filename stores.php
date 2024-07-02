@@ -1,5 +1,6 @@
 <?php
 global $wpdb;
+// $_COOKIE;
 // echo "Start fetching data"; // ここで実行確認
 $get_data = $wpdb->get_results('SELECT * FROM wp_gongcha ORDER BY id ASC');
 

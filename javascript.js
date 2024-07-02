@@ -1,5 +1,5 @@
 function setCookie(name, value, days) {
-    const expires = "";
+    let expires = "";
     if (days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -19,35 +19,35 @@ function getCookie(name) {
     return null;
 }
 
-function addToFavorites(postId) {
-    const favorites = getCookie('favorites');
-    favorites = favorites ? favorites.split(',') : [];
-    if (!favorites.includes(postId.toString())) {
-        favorites.push(postId);
-        setCookie('favorites', favorites.join(','), 7); // 7日間保持
+function addTokeeps(postId) {
+    let keeps = getCookie('keeps');
+    keeps = keeps ? keeps.split(',') : [];
+    if (!keeps.includes(postId.toString())) {
+        keeps.push(postId);
+        setCookie('keeps', keeps.join(','), 7); // 7日間保持
     }
 }
 
-function removeFromFavorites(postId) {
-    const favorites = getCookie('favorites');
-    if (favorites) {
-        favorites = favorites.split(',');
-        const index = favorites.indexOf(postId.toString());
+function removeFromkeeps(postId) {
+    let keeps = getCookie('keeps');
+    if (keeps) {
+        keeps = keeps.split(',');
+        const index = keeps.indexOf(postId.toString());
         if (index !== -1) {
-            favorites.splice(index, 1);
-            setCookie('favorites', favorites.join(','), 7); // 7日間保持
+            keeps.splice(index, 1);
+            setCookie('keeps', keeps.join(','), 7); // 7日間保持
         }
     }
 }
 
 function toggleFavorite(postId) {
-    const favorites = getCookie('favorites');
-    favorites = favorites ? favorites.split(',') : [];
-    if (favorites.includes(postId.toString())) {
-        removeFromFavorites(postId);
+    const keeps = getCookie('keeps');
+    keeps = keeps ? keeps.split(',') : [];
+    if (keeps.includes(postId.toString())) {
+        removeFromkeeps(postId);
         // お気に入りから削除された時の処理
     } else {
-        addToFavorites(postId);
+        addTokeeps(postId);
         // お気に入りに追加された時の処理
     }
 }

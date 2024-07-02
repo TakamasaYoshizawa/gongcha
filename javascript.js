@@ -11,45 +11,62 @@ function setCookie(name, value, days) {
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
-    for (const i = 0; i < ca.length; i++) {
-        const c = ca[i];
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
         while (c.charAt(0) == ' ') c = c.substring(1, c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }
 
-function addTokeeps(postId) {
-    let keeps = getCookie('keeps');
-    keeps = keeps ? keeps.split(',') : [];
-    if (!keeps.includes(postId.toString())) {
-        keeps.push(postId);
-        setCookie('keeps', keeps.join(','), 7); // 7日間保持
+function addToFavorites(shopId) {
+    let favorites = getCookie('favorites');
+    favorites = favorites ? favorites.split(',') : [];
+    if (!favorites.includes(shopId.toString())) {
+        favorites.push(shopId);
+        setCookie('favorites', favorites.join(','), 7); // 7日間保持
     }
 }
 
-function removeFromkeeps(postId) {
-    let keeps = getCookie('keeps');
-    if (keeps) {
-        keeps = keeps.split(',');
-        const index = keeps.indexOf(postId.toString());
+function removeFromFavorites(shopId) {
+    let favorites = getCookie('favorites');
+    if (favorites) {
+        favorites = favorites.split(',');
+        const index = favorites.indexOf(shopId.toString());
         if (index !== -1) {
-            keeps.splice(index, 1);
-            setCookie('keeps', keeps.join(','), 7); // 7日間保持
+            favorites.splice(index, 1);
+            setCookie('favorites', favorites.join(','), 7); // 7日間保持
         }
     }
 }
 
-function toggleFavorite(postId) {
-    const keeps = getCookie('keeps');
-    keeps = keeps ? keeps.split(',') : [];
-    if (keeps.includes(postId.toString())) {
-        removeFromkeeps(postId);
-        // お気に入りから削除された時の処理
+function toggleFavorite(shopId) {
+    let favorites = getCookie('favorites');
+    favorites = favorites ? favorites.split(',') : [];
+    if (favorites.includes(shopId.toString())) {
+        removeFromFavorites(shopId);
+        document.querySelector(`[data-shop-id="${shopId}"] .favorite-button`).innerText = 'Add to Favorites';
     } else {
-        addTokeeps(postId);
-        // お気に入りに追加された時の処理
+        addToFavorites(shopId);
+        document.querySelector(`[data-shop-id="${shopId}"] .favorite-button`).innerText = 'Remove from Favorites';
     }
 }
 
-console.log("ちんこ");
+function initializeFavoriteButtons() {
+    const buttons = document.querySelectorAll('.favorite-button');
+    buttons.forEach(button => {
+        const shopId = button.dataset.shopId;
+        const favorites = getCookie('favorites');
+        const favoritesArray = favorites ? favorites.split(',') : [];
+        if (favoritesArray.includes(shopId)) {
+            button.innerText = 'Remove from Favorites';
+        } else {
+            button.innerText = 'Add to Favorites';
+        }
+        button.addEventListener('click', () => toggleFavorite(shopId));
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeFavoriteButtons);
+
+console.log("ぽりんちんぽ");

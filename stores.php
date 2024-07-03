@@ -7,7 +7,7 @@ $get_data = $wpdb->get_results('SELECT * FROM wp_gongcha ORDER BY id ASC');
 // echo "Fetched data count: " . count($get_data); // 取得データの数を表示
 
 // コンテナ開始
-echo '<div class="container">';
+echo '<div class="container shop-one" data-shop-id="<?php echo $post->ID; ?>">';
 echo '<div class="row">';
 
 $count = 0;
@@ -80,6 +80,7 @@ foreach ($get_data as $data) {
                                 <a href="">
                                     <!-- キープの星の画像の箇所 -->
                                     <img src="">
+                                    <button class="favorite-button" data-shop-id="$data->id">Add to Favorites</button>
                                     ▶︎キープする
                                 </a>
                             </div>

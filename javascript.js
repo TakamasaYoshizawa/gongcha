@@ -6,6 +6,7 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    console.log("Cookie set: " + name + "=" + value + "; expires=" + date.toUTCString() + "; path=/");
 }
 
 function getCookie(name) {
@@ -26,6 +27,7 @@ function addToFavorites(shopId) {
         favorites.push(shopId);
         setCookie('favorites', favorites.join(','), 7); // 7日間保持
     }
+    console.log("Added to favorites: " + shopId);
 }
 
 function removeFromFavorites(shopId) {
@@ -38,6 +40,7 @@ function removeFromFavorites(shopId) {
             setCookie('favorites', favorites.join(','), 7); // 7日間保持
         }
     }
+    console.log("Removed from favorites: " + shopId);
 }
 
 function toggleFavorite(shopId) {
@@ -69,4 +72,4 @@ function initializeFavoriteButtons() {
 
 document.addEventListener('DOMContentLoaded', initializeFavoriteButtons);
 
-console.log("ぽりんちんぽ");
+console.log("JavaScript file loaded successfully");

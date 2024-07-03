@@ -1,10 +1,6 @@
 <?php
 global $wpdb;
-// $_COOKIE;
-// echo "Start fetching data"; // ここで実行確認
 $get_data = $wpdb->get_results('SELECT * FROM wp_gongcha ORDER BY id ASC');
-
-// echo "Fetched data count: " . count($get_data); // 取得データの数を表示
 
 // コンテナ開始
 echo '<div class="container shop-one" data-shop-id="<?php echo $post->ID; ?>">';
@@ -16,9 +12,7 @@ foreach ($get_data as $data) {
     // 新しい行の開始
     if ($count > 0 && $count % 2 == 0) {
         echo '</div><div class="row">';
-    }
-
-    // echo "Processing data: " . $data->name; // 各データの処理開始を表示
+    };
 
     print <<<EOT
         <div class="col-sm-6 d-flex">
@@ -80,8 +74,7 @@ foreach ($get_data as $data) {
                                 <a href="">
                                     <!-- キープの星の画像の箇所 -->
                                     <img src="">
-                                    <button class="favorite-button" data-shop-id="$data->id">Add to Favorites</button>
-                                    ▶︎キープする
+                                    <button class="favorite-button" data-shop-id="$data->id"></button>
                                 </a>
                             </div>
                         </div>
@@ -101,7 +94,6 @@ foreach ($get_data as $data) {
             </div>
         </div>
     EOT;
-
     $count++;
 }
 

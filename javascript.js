@@ -1,7 +1,7 @@
 function setCookie(name, value, days) {
     let expires = "";
+    const date = new Date();
     if (days) {
-        const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
@@ -62,14 +62,22 @@ function initializeFavoriteButtons() {
         const favorites = getCookie('favorites');
         const favoritesArray = favorites ? favorites.split(',') : [];
         if (favoritesArray.includes(shopId)) {
-            button.innerText = 'Remove from Favorites';
+            button.innerText = '▶︎キープを外す';
         } else {
-            button.innerText = 'Add to Favorites';
+            button.innerText = '▶︎キープする';
         }
         button.addEventListener('click', () => toggleFavorite(shopId));
+    });
+
+    // Remove favorite buttons on the favorites list page
+    const removeButtons = document.querySelectorAll('.remove-favorite-button');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const shopId = this.getAttribute('data-shop-id');
+            removeFromFavorites(shopId);
+            this.parentElement.remove();
+        });
     });
 }
 
 document.addEventListener('DOMContentLoaded', initializeFavoriteButtons);
-
-console.log("JavaScript file loaded successfully");

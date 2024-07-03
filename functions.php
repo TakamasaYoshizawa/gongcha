@@ -66,39 +66,80 @@ add_shortcode('sc_test', 'shortcode_test');
 // ショートコードの追加
 // functions.php
 
-// お気に入りリストを表示するショートコードの関数
-function display_favorite_shops() {
+// // お気に入りリストを表示するショートコードの関数
+// function display_favorite_shops() {
+//   global $wpdb;
+
+//   // クッキーからお気に入りのショップIDを取得
+//   if (isset($_COOKIE['favorites'])) {
+//       $favorite_ids = explode(',', $_COOKIE['favorites']);
+//   } else {
+//       return '<p>No favorites added yet.</p>';
+//   }
+
+//   if (empty($favorite_ids)) {
+//       return '<p>No favorites added yet.</p>';
+//   }
+
+//   // ショップ情報を取得するためのクエリを構築
+//   $placeholders = implode(',', array_fill(0, count($favorite_ids), '%d'));
+//   $query = $wpdb->prepare("SELECT * FROM wp_gongcha WHERE id IN ($placeholders)", $favorite_ids);
+//   $favorite_shops = $wpdb->get_results($query);
+
+//   // お気に入りリストのHTMLを生成
+//   $output = '<div class="favorite-shops">';
+//   foreach ($favorite_shops as $shop) {
+//       $output .= '<div class="shop-one" data-shop-id="' . esc_attr($shop->id) . '">';
+//       $output .= '<h3>' . esc_html($shop->name) . '</h3>';
+//       $output .= '<p>' . esc_html($shop->description) . '</p>';
+//       $output .= '<a href="' . esc_url($shop->link) . '">詳細を見る</a>';
+//       $output .= '</div>';
+//   }
+//   $output .= '</div>';
+
+//   return $output;
+// }
+
+// // ショートコードを登録
+// add_shortcode('favorite_shops', 'display_favorite_shops');
+
+// ショートコード: お気に入りのページ一覧を表示
+function display_favorites_list() {
   global $wpdb;
+  $output = '<div class="container">';
 
-  // クッキーからお気に入りのショップIDを取得
   if (isset($_COOKIE['favorites'])) {
-      $favorite_ids = explode(',', $_COOKIE['favorites']);
+      $favorites = explode(',', $_COOKIE['favorites']);
+
+      if (!empty($favorites)) {
+          $count = 0;
+          $output .= '<div class="row">';
+          foreach ($favorites as $id) {
+              $data = $wpdb->get_row($wpdb->prepare("SELECT * FROM wp_gongcha WHERE id = %d", $id));
+
+              if ($data) {
+                  if ($count > 0 && $count % 2 == 0) {
+                      $output .= '</div><div class="row">';
+                  }
+
+                  ob_start();
+                  $template_data = array('data' => $data, 'id' => $id);
+                  extract($template_data);
+                  include locate_template('favorite-template.php');
+                  $output .= ob_get_clean();
+
+                  $count++;
+              }
+          }
+          $output .= '</div>';
+      } else {
+          $output .= '<p>お気に入りに登録されているショップはありません。</p>';
+      }
   } else {
-      return '<p>No favorites added yet.</p>';
+      $output .= '<p>お気に入りに登録されているショップはありません。</p>';
   }
 
-  if (empty($favorite_ids)) {
-      return '<p>No favorites added yet.</p>';
-  }
-
-  // ショップ情報を取得するためのクエリを構築
-  $placeholders = implode(',', array_fill(0, count($favorite_ids), '%d'));
-  $query = $wpdb->prepare("SELECT * FROM wp_gongcha WHERE id IN ($placeholders)", $favorite_ids);
-  $favorite_shops = $wpdb->get_results($query);
-
-  // お気に入りリストのHTMLを生成
-  $output = '<div class="favorite-shops">';
-  foreach ($favorite_shops as $shop) {
-      $output .= '<div class="shop-one" data-shop-id="' . esc_attr($shop->id) . '">';
-      $output .= '<h3>' . esc_html($shop->name) . '</h3>';
-      $output .= '<p>' . esc_html($shop->description) . '</p>';
-      $output .= '<a href="' . esc_url($shop->link) . '">詳細を見る</a>';
-      $output .= '</div>';
-  }
   $output .= '</div>';
-
   return $output;
 }
-
-// ショートコードを登録
-add_shortcode('favorite_shops', 'display_favorite_shops');
+add_shortcode('favorites_list', 'display_favorites_list');

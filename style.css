@@ -89,10 +89,12 @@
 
 .shop-list-search {
   border: solid 2px #000;
+  border-radius: 15px;
   padding: 1% 4%;
   font-size: 1rem;
   width: 100%;
   margin-top: 30px;
+  box-shadow: 0 0 8px gray;
 }
 
 .shop-list-search th,.shop-list-search td {
@@ -121,6 +123,9 @@
   color: #000;
 }
 
+.shop-list-image {
+  margin-top: 15px;
+}
 .shop-list-image img{
   text-align: center;
 }
@@ -139,4 +144,12 @@
   display: inline-block;
   list-style: none;
   border: 1px solid #494949;
+}
+
+.s-l-t {
+  margin-top: 15px;
+}
+
+.s-l-t td {
+  line-height: 1rem;
 }

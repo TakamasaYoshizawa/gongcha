@@ -22,10 +22,10 @@ foreach ($get_data as $data) {
                         <h3 class="shop-list-name">$data->name</h3>
                         <div class="shop-list-image">
                             <div class="row">
-                                <div class="col-xs-4">
+                                <div class="col-4">
                                     <img src="$data->img">
                                 </div>
-                                <div class="col-xs-8">
+                                <div class="col-8">
                                     <p>$data->description</p>
                                 </div>
                             </div>
@@ -69,16 +69,14 @@ foreach ($get_data as $data) {
                         </div>
                     </a>
                     <div class="row">
-                        <div class="col-xs-6 keepbtn">
+                        <div class="col-6 keepbtn">
                             <div class="keep_btn_a">
                                 <a href="">
-                                    <!-- キープの星の画像の箇所 -->
-                                    <img src="">
                                     <button class="favorite-button" data-shop-id="$data->id"></button>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <div class="keep_btn_a">
                                 <a href="">
                                     ▶︎詳しく見る

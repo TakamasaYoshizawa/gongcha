@@ -65,9 +65,9 @@ function initializeFavoriteButtons() {
         actionDiv.classList.add('hello'); // ここでhelloクラスを追加
         
         if (favoritesArray.includes(shopId)) {
-            button.innerText = '▶︎キープを外す';
+            button.textContent = '▶︎キープを外す';
         } else {
-            button.innerText = '▶︎キープする';
+            button.textContent = '▶︎キープする';
         }
         button.addEventListener('click', () => toggleFavorite(shopId));
     });

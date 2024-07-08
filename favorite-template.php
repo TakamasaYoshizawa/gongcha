@@ -61,8 +61,7 @@
                     <div class="keep_btn_a">
                         <a href="">
                             <img src="">
-                            <button class="remove-favorite-button" data-shop-id="<?php echo esc_attr($id); ?>">お気に入りから削除</button>
-                            ▶︎キープする
+                            <button class="favorite-button" data-shop-id="<?php echo esc_attr($id); ?>">お気に入りから削除</button>
                         </a>
                     </div>
                 </div>

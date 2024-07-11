@@ -20,7 +20,16 @@ cocoon_template_part('tmp/single-contents'); ?>
 <?php
 $post_id = get_the_ID();
 ?>
-<button id="favorite-button-<?php echo $post_id; ?>" class="favorite-button" data-post-id="<?php echo $post_id; ?>">Add to Favorites</button>
+<!-- <button id="favorite-button-<?php echo $post_id; ?>" class="favorite-button" data-post-id="<?php echo $post_id; ?>">Add to Favorites</button> -->
 
+<!-- <?php 
+global $wpdb;
+$get_data = $wpdb->get_results('SELECT * FROM wp_gongcha ORDER BY id ASC');
+
+foreach($get_data as $data){
+ echo $data->id;
+}
+
+?> -->
 <?php get_footer(); ?>
 

@@ -107,7 +107,7 @@ echo '</div>';
 
 // フッターにボタンを追加
 echo '<footer>';
-echo '<button id="toggle-ids">Toggle IDs</button>';
+echo '<button id="toggle-ids">ID番号を表示する</button>';
 echo '</footer>';
 ?>
 

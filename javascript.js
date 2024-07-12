@@ -57,6 +57,12 @@ function toggleFavorite(shopId) {
         button.textContent = '▶︎キープを外す';
         button.classList.add('hello');
     }
+
+    // ページがキープページの場合は、要素を削除
+    const isKeepPage = window.location.pathname.includes("keep-page"); // キープページのURLに適宜変更
+    if (isKeepPage && button.textContent === '▶︎キープする') {
+        button.closest('.col-sm-6').remove();
+    }
 }
 
 function initializeFavoriteButtons() {
@@ -73,13 +79,17 @@ function initializeFavoriteButtons() {
             button.textContent = '▶︎キープする';
         }
 
-        button.addEventListener('click', () => toggleFavorite(shopId));
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // デフォルトの動作を防ぐ（リロードを防ぐ）
+            toggleFavorite(shopId);
+        });
     });
 
     // Remove favorite buttons on the favorites list page
     const removeButtons = document.querySelectorAll('.remove-favorite-button');
     removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // デフォルトの動作を防ぐ（リロードを防ぐ）
             const shopId = this.getAttribute('data-shop-id');
             removeFromFavorites(shopId);
             this.parentElement.remove();

@@ -59,15 +59,12 @@
             <div class="row">
                 <div class="col-xs-6 keepbtn">
                     <div class="keep_btn_a">
-                        <a href="">
-                            <img src="">
-                            <button class="favorite-button" data-shop-id="<?php echo esc_attr($id); ?>">お気に入りから削除</button>
-                        </a>
+                        <button class="favorite-button" data-shop-id="<?php echo esc_attr($id); ?>">お気に入りから削除</button>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="keep_btn_a">
-                        <a href="">
+                        <a href="<?php echo esc_url($data->link); ?>">
                             ▶︎詳しく見る
                             <picture>
                                 <source type="">

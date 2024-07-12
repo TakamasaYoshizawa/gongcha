@@ -75,9 +75,7 @@ foreach ($get_data as $data) {
                     <div class="row">
                         <div class="col-6 keepbtn">
                             <div class="keep_btn_a">
-                                <a href="">
-                                    <button class="favorite-button" data-shop-id="$data->id"></button>
-                                </a>
+                                <button class="favorite-button" data-shop-id="$data->id"></button>
                             </div>
                         </div>
                         <div class="col-6">

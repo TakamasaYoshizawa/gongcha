@@ -62,7 +62,7 @@ function initializeFavoriteButtons() {
         const favorites = getCookie('favorites');
         const favoritesArray = favorites ? favorites.split(',') : [];
         const actionDiv = document.createElement('div');
-        actionDiv.classList.add('hello'); // ここでhelloクラスを追加
+        actionDiv.classList.add('hello'); // ここにhelloクラスを追加したい
         
         if (favoritesArray.includes(shopId)) {
             button.textContent = '▶︎キープを外す';

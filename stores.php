@@ -32,7 +32,6 @@ foreach ($get_data as $data) {
         <div class="col-sm-6 d-flex">
             <div class="shop-list-search">
                 <div class="shop-list-inner">
-                    <a href="$data->link">
                         <h3 class="shop-list-name">$data->name <span class="shop-id" style="display:none;">($data->id)</span></h3>
                         <div class="shop-list-image">
                             <div class="row">
@@ -73,7 +72,6 @@ foreach ($get_data as $data) {
                             </tbody>
                         </table>
                         $tag_list  <!-- ここでタグを表示 -->
-                    </a>
                     <div class="row">
                         <div class="col-6 keepbtn">
                             <div class="keep_btn_a">
@@ -84,7 +82,7 @@ foreach ($get_data as $data) {
                         </div>
                         <div class="col-6">
                             <div class="keep_btn_a">
-                                <a href="">
+                                <a href="$data->link">
                                     ▶︎詳しく見る
                                     <picture>
                                         <source type="">

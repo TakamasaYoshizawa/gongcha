@@ -46,12 +46,16 @@ function removeFromFavorites(shopId) {
 function toggleFavorite(shopId) {
     let favorites = getCookie('favorites');
     favorites = favorites ? favorites.split(',') : [];
+    const button = document.querySelector(`[data-shop-id="${shopId}"]`);
+    
     if (favorites.includes(shopId.toString())) {
         removeFromFavorites(shopId);
-        document.querySelector(`[data-shop-id="${shopId}"] .favorite-button`).innerText = 'Add to Favorites';
+        button.textContent = '▶︎キープする';
+        button.classList.remove('hello');
     } else {
         addToFavorites(shopId);
-        document.querySelector(`[data-shop-id="${shopId}"] .favorite-button`).innerText = 'Remove from Favorites';
+        button.textContent = '▶︎キープを外す';
+        button.classList.add('hello');
     }
 }
 
@@ -61,14 +65,14 @@ function initializeFavoriteButtons() {
         const shopId = button.dataset.shopId;
         const favorites = getCookie('favorites');
         const favoritesArray = favorites ? favorites.split(',') : [];
-        const actionDiv = document.createElement('div');
-        actionDiv.classList.add('hello'); // ここにhelloクラスを追加したい
         
         if (favoritesArray.includes(shopId)) {
             button.textContent = '▶︎キープを外す';
+            button.classList.add('hello');
         } else {
             button.textContent = '▶︎キープする';
         }
+
         button.addEventListener('click', () => toggleFavorite(shopId));
     });
 

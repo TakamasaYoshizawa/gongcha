@@ -1,8 +1,3 @@
-<?php
-/*
- * Template part for displaying favorite shop item
- */
-?>
 <div class="col-sm-6 d-flex">
     <div class="shop-list-search">
         <div class="shop-list-inner">
@@ -59,7 +54,7 @@
             <div class="row">
                 <div class="col-xs-6 keepbtn">
                     <div class="keep_btn_a">
-                        <button class="favorite-button" data-shop-id="<?php echo esc_attr($id); ?>">お気に入りから削除</button>
+                        <button class="favorite-button" data-shop-id="<?php echo esc_attr($data->id); ?>">お気に入りから削除</button>
                     </div>
                 </div>
                 <div class="col-xs-6">

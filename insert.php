@@ -7,9 +7,6 @@ error_reporting(E_ALL);
 // WordPress環境をロードする
 require_once('../../../wp-load.php');
 
-// デバッグ用: 実行確認メッセージ
-// echo "PHP script is running.";
-
 // グローバル変数 $wpdb を使用してデータベースに接続
 global $wpdb;
 
@@ -54,21 +51,21 @@ if (isset($_POST['id']) && isset($_POST['post_id']) && isset($_POST['name']) && 
             'area' => $area,
             'access' => $access,
             'op_time' => $op_time,
-            'occupation' =>$occupation,
+            'occupation' => $occupation,
         ),
         array(
             '%d', // 既存IDは整数
-            '%s', 
-            '%s', 
-            '%s', 
-            '%s',
-            '%s',
-            '%s',
-            '%s',
-            '%s',
-            '%s',
-            '%s',
-            '%s',
+            '%d', // 投稿IDは整数
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
+            '%s', // 文字列
         )
     );
 

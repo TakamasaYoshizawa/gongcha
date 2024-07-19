@@ -32,7 +32,7 @@ foreach ($get_data as $data) {
         <div class="col-sm-6 d-flex">
             <div class="shop-list-search">
                 <div class="shop-list-inner">
-                        <h3 class="shop-list-name">$data->name <span class="shop-id" style="display:none;">($data->id)</span></h3>
+                        <h3 class="shop-list-name">$data->name<span class="shop-id" style="display:none;">($data->id)</span></h3>
                         <div class="shop-list-image">
                             <div class="row">
                                 <div class="col-4">

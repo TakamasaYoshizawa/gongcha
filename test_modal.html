@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エリアと業種選択フォーム</title>
+    <style>
+        .kantan-search-part-wrap {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .col {
+            text-align: center;
+        }
+
+        .gtm-top-kantan-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .gtm-top-kantan-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .search-form {
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+
+        .search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="kantan-search-part-wrap" class="kantan-search-part-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button id="gtm-top-kantan-btn" class="gtm-top-kantan-btn">
+                    簡単検索
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="search-form" class="search-form">
+        <form action="/search-results" method="get">
+            <input type="text" name="area" id="area-input" placeholder="エリアを選択" class="search-input" readonly>
+            <input type="text" name="business" id="business-input" placeholder="業種を選択" class="search-input" readonly>
+            <button type="submit" class="search-button">検索</button>
+        </form>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <ul id="location-list">
+        <li>歌舞伎町</li>
+        <li>銀座</li>
+        <li>六本木</li>
+        <li>新橋</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+document.getElementById('gtm-top-kantan-btn').addEventListener('click', function() {
+    var searchForm = document.getElementById('search-form');
+    if (searchForm.style.display === 'none' || searchForm.style.display === '') {
+        searchForm.style.display = 'block';
+    } else {
+        searchForm.style.display = 'none';
+    }
+});
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// Get the input fields
+var areaInput = document.getElementById("area-input");
+var businessInput = document.getElementById("business-input");
+
+// Variable to keep track of which input field is active
+var activeInput = null;
+
+// Add click event to the input fields to open the modal
+areaInput.addEventListener('click', function() {
+    activeInput = areaInput;
+    modal.style.display = "block";
+});
+
+businessInput.addEventListener('click', function() {
+    activeInput = businessInput;
+    modal.style.display = "block";
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Add event listeners to list items
+var listItems = document.querySelectorAll('#location-list li');
+listItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        if (activeInput) {
+            activeInput.value = item.textContent;
+        }
+        modal.style.display = "none"; // close modal after selection
+    });
+});
+</script>
+
+</body>
+</html>

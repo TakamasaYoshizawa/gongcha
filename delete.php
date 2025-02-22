@@ -35,9 +35,9 @@ if (isset($_POST['id'])) {
 
     // 結果のチェック
     if ($result !== false) {
-        echo "正しくデータが削除されました！";
+        echo "正しくデータが削除されました！<br/><a href='https://caba-island.com/'>トップページに戻る</a>";
     } else {
-        echo "情報が削除されませんでした。" . $wpdb->last_error;
+        echo "情報が削除されませんでした。<br/><a href='https://caba-island.com/'>トップページに戻る</a>" . $wpdb->last_error;
     }
 } else {
     echo "Error: Form data not set.";

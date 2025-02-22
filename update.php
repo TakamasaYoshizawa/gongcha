@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // トランザクションをコミット
             $wpdb->query('COMMIT');
 
-            echo "ID $id1 と ID $id2 の交換が成功しました！";
+            echo "ID $id1 と ID $id2 の交換が成功しました！<br/><a href='https://caba-island.com/'>トップページに戻る</a>";
 
         } catch (Exception $e) {
             $wpdb->query('ROLLBACK');

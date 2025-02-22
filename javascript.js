@@ -51,11 +51,13 @@ function toggleFavorite(shopId) {
     if (favorites.includes(shopId.toString())) {
         removeFromFavorites(shopId);
         button.textContent = '▶︎キープする';
-        button.classList.remove('hello');
+        button.classList.remove('keeped');
+        console.log('Removed from favorites:', shopId);  // ここで削除されたことを確認
     } else {
         addToFavorites(shopId);
         button.textContent = '▶︎キープを外す';
-        button.classList.add('hello');
+        button.classList.add('keeped');
+        console.log('Added to favorites:', shopId);  // ここで追加されたことを確認
     }
 
     // ページがキープページの場合は、要素を削除
@@ -67,6 +69,7 @@ function toggleFavorite(shopId) {
 
 function initializeFavoriteButtons() {
     const buttons = document.querySelectorAll('.favorite-button');
+    console.log('Favorite buttons:', buttons);  // ここでボタンが正しく取得されているか確認
     buttons.forEach(button => {
         const shopId = button.dataset.shopId;
         const favorites = getCookie('favorites');
@@ -74,13 +77,14 @@ function initializeFavoriteButtons() {
         
         if (favoritesArray.includes(shopId)) {
             button.textContent = '▶︎キープを外す';
-            button.classList.add('hello');
+            button.classList.add('keeped');
         } else {
             button.textContent = '▶︎キープする';
         }
 
         button.addEventListener('click', (event) => {
             event.preventDefault(); // デフォルトの動作を防ぐ（リロードを防ぐ）
+            console.log('Button clicked:', shopId);  // ボタンがクリックされたことを確認
             toggleFavorite(shopId);
         });
     });
@@ -98,3 +102,26 @@ function initializeFavoriteButtons() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeFavoriteButtons);
+
+// 投稿下部のスクロールすると現れるボタン
+document.addEventListener('DOMContentLoaded', function () {
+    var scrollButton = document.getElementById('scroll-button');
+  
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.scrollY; // 現在のスクロール位置
+      var windowHeight = window.innerHeight; // ビューポートの高さ
+      var documentHeight = document.documentElement.scrollHeight; // ページ全体の高さ
+  
+      if (scrollTop + windowHeight >= documentHeight) {
+        // 最下部に到達したらボタンを非表示
+        scrollButton.style.display = 'none';
+      } else if (scrollTop > 200) {
+        // スクロール位置が200pxを超えたら表示
+        scrollButton.style.display = 'block';
+      } else {
+        // 初期状態では非表示
+        scrollButton.style.display = 'none';
+      }
+    });
+  });
+  

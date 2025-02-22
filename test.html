@@ -35,31 +35,44 @@
         <option value="新橋">新橋</option>
         <option value="西麻布">西麻布</option>
         <option value="赤坂">赤坂</option>
-        <option value="錦糸町/門前仲町">錦糸町/門前仲町</option>
+        <option value="錦糸町">錦糸町</option>
+        <option value="門前仲町">門前仲町</option>
         <option value="渋谷">渋谷</option>
         <option value="五反田">五反田</option>
         <option value="町田">町田</option>
-        <option value="吉祥寺/三鷹">吉祥寺/三鷹</option>
+        <option value="吉祥寺">吉祥寺</option>
+        <option value="三鷹">三鷹</option>
         <option value="神田">神田</option>
         <option value="立川">立川</option>
         <option value="神楽坂">神楽坂</option>
-        <option value="練馬/成増/大山">練馬/成増/大山</option>
-        <option value="中目黒/自由が丘">中目黒/自由が丘</option>
+        <option value="練馬">練馬</option>
+        <option value="成増">成増</option>
+        <option value="大山">大山</option>
+        <option value="中目黒">中目黒</option>
+        <option value="自由が丘">自由が丘</option>
         <option value="目黒">目黒</option>
-        <option value="蒲田/大井町">蒲田/大井町</option>
-        <option value="日暮里/巣鴨/赤羽">日暮里/巣鴨/赤羽</option>
+        <option value="蒲田">蒲田</option>
+        <option value="大井町">大井町</option>
+        <option value="日暮里">日暮里</option>
+        <option value="巣鴨">巣鴨</option>
+        <option value="赤羽">赤羽</option>
         <option value="秋葉原">秋葉原</option>
         <option value="三軒茶屋">三軒茶屋</option>
-        <option value="中野/高円寺">中野/高円寺</option>
+        <option value="中野">中野</option>
+        <option value="高円寺">高円寺</option>
         <option value="西新宿">西新宿</option>
-        <option value="小岩/新小岩">小岩/新小岩</option>
+        <option value="小岩">小岩</option>
+        <option value="新小岩">新小岩</option>
         <option value="祖師ヶ谷大蔵">祖師ヶ谷大蔵</option>
         <option value="八王子">八王子</option>
         <option value="下北沢">下北沢</option>
-        <option value="幡ヶ谷/西永福">幡ヶ谷/西永福</option>
-        <option value="経堂/千歳烏山">経堂/千歳烏山</option>
+        <option value="幡ヶ谷">幡ヶ谷</option>
+        <option value="西永福">西永福</option>
+        <option value="経堂">千歳烏山</option>
+        <option value="千歳烏山">千歳烏山</option>
         <option value="調布">調布</option>
-        <option value="高田馬場/曙橋">高田馬場/曙橋</option>
+        <option value="高田馬場">高田馬場</option>
+        <option value="曙橋">曙橋</option>
         <option value="綾瀬">綾瀬</option>
         <option value="青山">青山</option>
         <option value="麻布十番">麻布十番</option>
@@ -77,13 +90,15 @@
         <option value="--【埼玉】--">--【埼玉】--</option>
         <option value="大宮">大宮</option>
         <option value="蕨">蕨</option>
-        <option value="川口/越谷">川口/越谷</option>
+        <option value="川口">川口</option>
+        <option value="越谷">越谷</option>
         <option value="志木">志木</option>
         <option value="--【千葉】--">--【千葉】--</option>
         <option value="船橋">船橋</option>
         <option value="千葉">千葉</option>
         <option value="松戸/柏">松戸/柏</option>
-        <option value="西船橋/津田沼">西船橋/津田沼</option>
+        <option value="西船橋">西船橋</option>
+        <option value="津田沼">津田沼</option>
         <option value="南行徳">南行徳</option>
         <option value="市川">市川</option>
         <option value="--【栃木】--">--【栃木】--</option>
@@ -98,6 +113,309 @@
     <br><br>
     <label for="occupation">職種:</label>
     <input type="text" id="occupation" name="occupation" required>
+    <br><br>
+    <input type="submit" value="登録する">
+</form>
+
+<!-- ピックアップのパーツ -->
+
+<!-- １店舗分 -->
+<a href="https://yorozuya-kagura.com/427/" style="text-decoration-line: none;">
+<div class="pickUpItem">
+        <div class="pickUpImg">
+            <img src="https://yorozuya-kagura.com/wp-content/uploads/2024/05/S__361537553-1024x768-1.webp" alt="Image">
+        </div>
+        <div class="pickUpDetail">
+            <h4>coda<br><small>(コーダ)</small></h4>
+            <hr>
+            <div class="p_shop_salary">
+                <i class="fa-solid fa-yen-sign"></i>時給4,100円以上
+            </div>
+            <div class="p_shop_area">
+                <i class="fa-solid fa-location-dot"></i>上野
+            </div>
+            <div class="p_shop_business">
+                <i class="fa-solid fa-ribbon"></i>ガールズバー
+            </div>
+        </div>
+    </div>
+</a>
+<!-- ここまで -->
+
+
+<ul>
+    <li>歌舞伎町</li>
+    <li>銀座</li>
+    <li>六本木</li>
+    <li>新橋</li>
+</ul>
+
+
+
+<form action="/wp-content/themes/inspiro-child/insert.php" method="POST">
+    <label for="id">店舗ID:</label>
+    <input type="text" id="id" name="id" required>
+    <br><br>
+    <label for="post_id">投稿ID:</label>
+    <input type="text" id="post_id" name="post_id" required>
+    <br><br>
+    <label for="name">店舗名:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+    <label for="link">リンク:</label>
+    <input type="text" id="link" name="link" required>
+    <br><br>
+    <label for="img">店舗画像:</label>
+    <input type="text" id="img" name="img" required>
+    <br><br>
+    <label for="business">業種:</label>
+    <input type="text" id="business" name="business" required>
+    <br><br>
+    <label for="area">エリア:</label>
+    <select id="area" name="area" required>        
+        <option value="--【東京】--">--【東京】--</option>
+        <option value="六本木">六本木</option>
+        <option value="新橋">新橋</option>
+        <option value="赤坂">赤坂</option>
+        <option value="歌舞伎町">歌舞伎町</option>
+        <option value="西新宿">西新宿</option>
+        <option value="四谷">四谷</option>
+        <option value="神楽坂">神楽坂</option>
+        <option value="渋谷">渋谷</option>
+        <option value="恵比寿">恵比寿</option>
+        <option value="幡ヶ谷">幡ヶ谷</option>
+        <option value="池袋">池袋</option>
+        <option value="五反田">五反田</option>
+        <option value="銀座">銀座</option>
+        <option value="上野">上野</option>
+        <option value="中野">中野</option>
+        <option value="綾瀬">綾瀬</option>
+        <option value="北千住">北千住</option>
+        <option value="竹ノ塚">竹ノ塚</option>
+        <option value="錦糸町">錦糸町</option>
+        <option value="荻窪">荻窪</option>
+        <option value="高円寺">高円寺</option>
+        <option value="下高井戸">下高井戸</option>
+        <option value="蒲田">蒲田</option>
+        <option value="門前仲町">門前仲町</option>
+        <option value="新小岩">新小岩</option>
+        <option value="亀有">亀有</option>
+        <option value="練馬">練馬</option>
+        <option value="大泉学園">大泉学園</option>
+        <option value="目黒">目黒</option>
+        <option value="中目黒">中目黒</option>
+        <option value="自由が丘">自由が丘</option>
+        <option value="日暮里">日暮里</option>
+        <option value="西日暮里">西日暮里</option>
+        <option value="下北沢">下北沢</option>
+        <option value="三軒茶屋">三軒茶屋</option>
+        <option value="千歳烏山">千歳烏山</option>
+        <option value="祖師ヶ谷大蔵">祖師ヶ谷大蔵</option>
+        <option value="神田">神田</option>
+        <option value="小岩">小岩</option>
+        <option value="瑞江">瑞江</option>
+        <option value="葛西">葛西</option>
+        <option value="町田">町田</option>
+        <option value="立川">立川</option>
+        <option value="清瀬">清瀬</option>
+        <option value="多摩">多摩</option>
+        <option value="調布">調布</option>
+        <option value="府中">府中</option>
+        <option value="三鷹">三鷹</option>
+        <option value="八王子">八王子</option>
+        <option value="吉祥寺">吉祥寺</option>
+        <option value="ひばりヶ丘">ひばりヶ丘</option>
+        <option value="--【埼玉】--">--【埼玉】--</option>
+        <option value="大宮">大宮</option>
+        <option value="越谷">越谷</option>
+        <option value="川越">川越</option>
+        <option value="所沢">所沢</option>
+        <option value="志木">志木</option>
+        <option value="浦和">浦和</option>
+        <option value="川口">川口</option>
+        <option value="西川口">西川口</option>
+        <option value="蕨">蕨</option>
+        <option value="草加">草加</option>
+        <option value="--【千葉】--">--【千葉】--</option>
+        <option value="柏">柏</option>
+        <option value="松戸">松戸</option>
+        <option value="浦安">浦安</option>
+        <option value="市川">市川</option>
+        <option value="君津">君津</option>
+        <option value="五井">五井</option>
+        <option value="佐倉">佐倉</option>
+        <option value="船橋">船橋</option>
+        <option value="西船橋">西船橋</option>
+        <option value="木更津">木更津</option>
+        <option value="新八柱">新八柱</option>
+        <option value="千葉市">千葉市</option>
+        <option value="津田沼">津田沼</option>
+        <option value="本八幡">本八幡</option>
+        <option value="--【神奈川】--">--【神奈川】--</option>
+        <option value="川崎">川崎</option>
+        <option value="関内">関内</option>
+        <option value="平塚">平塚</option>
+        <option value="藤沢">藤沢</option>
+        <option value="大和">大和</option>
+        <option value="橋本">橋本</option>
+        <option value="新横浜">新横浜</option>
+        <option value="横浜">横浜</option>
+        <option value="上大岡">上大岡</option>
+        <option value="白楽">白楽</option>
+        <option value="相模原">相模原</option>
+        <option value="湘南台">湘南台</option>
+        <option value="本厚木">本厚木</option>
+        <option value="桜木町">桜木町</option>
+        <option value="溝の口">溝の口</option>      
+    </select>
+    <br><br>
+    <label for="salary">時給:</label>
+    <input type="text" id="salary" name="salary" required>
+    <br></br>
+    <label for="access">営業時間:</label>
+    <input type="text" id="business_time" name="business_time" required>
+    <br><br>
+    <label for="op_time">定休日:</label>
+    <input type="text" id="holiday" name="holiday" required>
+    <br><br>
+    <input type="submit" value="登録する">
+</form>
+
+
+
+<form action="/wp-content/themes/cocoon-child-master/insert.php" method="POST">
+    <label for="name">店舗名:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+    <label for="business">業種:</label>
+    <input type="text" id="business" name="business" required>
+    <br><br>
+    <label for="id">店舗ID:</label>
+    <input type="text" id="id" name="id" required>
+    <br><br>
+    <label for="post_id">投稿ID:</label>
+    <input type="text" id="post_id" name="post_id" required>
+    <br><br>
+    <label for="link">店舗URL:</label>
+    <input type="text" id="link" name="link" required>
+    <br><br>
+    <label for="img">画像URL:</label>
+    <input type="text" id="img" name="img" required>
+    <br><br>
+    <label for="area">エリア:</label>
+    <select id="area" name="area" required>        
+        <option value="--【東京】--">--【東京】--</option>
+        <option value="六本木">六本木</option>
+        <option value="新橋">新橋</option>
+        <option value="西麻布">西麻布</option>
+        <option value="麻布十番">麻布十番</option>
+        <option value="青山">青山</option>
+        <option value="赤坂">赤坂</option>
+        <option value="歌舞伎町">歌舞伎町</option>
+        <option value="西新宿">西新宿</option>
+        <option value="四谷">四谷</option>
+        <option value="神楽坂">神楽坂</option>
+        <option value="渋谷">渋谷</option>
+        <option value="恵比寿">恵比寿</option>
+        <option value="幡ヶ谷">幡ヶ谷</option>
+        <option value="池袋">池袋</option>
+        <option value="五反田">五反田</option>
+        <option value="銀座">銀座</option>
+        <option value="上野">上野</option>
+        <option value="中野">中野</option>
+        <option value="綾瀬">綾瀬</option>
+        <option value="北千住">北千住</option>
+        <option value="赤羽">赤羽</option>
+        <option value="竹ノ塚">竹ノ塚</option>
+        <option value="錦糸町">錦糸町</option>
+        <option value="荻窪">荻窪</option>
+        <option value="高円寺">高円寺</option>
+        <option value="下高井戸">下高井戸</option>
+        <option value="蒲田">蒲田</option>
+        <option value="門前仲町">門前仲町</option>
+        <option value="新小岩">新小岩</option>
+        <option value="亀有">亀有</option>
+        <option value="練馬">練馬</option>
+        <option value="大泉学園">大泉学園</option>
+        <option value="目黒">目黒</option>
+        <option value="中目黒">中目黒</option>
+        <option value="自由が丘">自由が丘</option>
+        <option value="日暮里">日暮里</option>
+        <option value="西日暮里">西日暮里</option>
+        <option value="下北沢">下北沢</option>
+        <option value="三軒茶屋">三軒茶屋</option>
+        <option value="千歳烏山">千歳烏山</option>
+        <option value="祖師ヶ谷大蔵">祖師ヶ谷大蔵</option>
+        <option value="神田">神田</option>
+        <option value="小岩">小岩</option>
+        <option value="瑞江">瑞江</option>
+        <option value="葛西">葛西</option>
+        <option value="町田">町田</option>
+        <option value="立川">立川</option>
+        <option value="清瀬">清瀬</option>
+        <option value="多摩">多摩</option>
+        <option value="調布">調布</option>
+        <option value="府中">府中</option>
+        <option value="三鷹">三鷹</option>
+        <option value="八王子">八王子</option>
+        <option value="吉祥寺">吉祥寺</option>
+        <option value="ひばりヶ丘">ひばりヶ丘</option>
+        <option value="国分寺">国分寺</option>
+        <option value="--【埼玉】--">--【埼玉】--</option>
+        <option value="大宮">大宮</option>
+        <option value="越谷">越谷</option>
+        <option value="川越">川越</option>
+        <option value="所沢">所沢</option>
+        <option value="志木">志木</option>
+        <option value="浦和">浦和</option>
+        <option value="川口">川口</option>
+        <option value="西川口">西川口</option>
+        <option value="蕨">蕨</option>
+        <option value="草加">草加</option>
+        <option value="上福岡">上福岡</option>
+        <option value="--【千葉】--">--【千葉】--</option>
+        <option value="柏">柏</option>
+        <option value="松戸">松戸</option>
+        <option value="浦安">浦安</option>
+        <option value="市川">市川</option>
+        <option value="君津">君津</option>
+        <option value="五井">五井</option>
+        <option value="佐倉">佐倉</option>
+        <option value="船橋">船橋</option>
+        <option value="西船橋">西船橋</option>
+        <option value="木更津">木更津</option>
+        <option value="新八柱">新八柱</option>
+        <option value="千葉市">千葉市</option>
+        <option value="津田沼">津田沼</option>
+        <option value="本八幡">本八幡</option>
+        <option value="--【神奈川】--">--【神奈川】--</option>
+        <option value="川崎">川崎</option>
+        <option value="関内">関内</option>
+        <option value="平塚">平塚</option>
+        <option value="藤沢">藤沢</option>
+        <option value="大和">大和</option>
+        <option value="橋本">橋本</option>
+        <option value="新横浜">新横浜</option>
+        <option value="横浜">横浜</option>
+        <option value="上大岡">上大岡</option>
+        <option value="白楽">白楽</option>
+        <option value="相模原">相模原</option>
+        <option value="湘南台">湘南台</option>
+        <option value="本厚木">本厚木</option>
+        <option value="桜木町">桜木町</option>
+        <option value="溝の口">溝の口</option>    
+        <option value="大船">大船</option>  
+        <option value="武蔵小杉">武蔵小杉</option>  
+    </select>
+    <br><br>
+    <label for="salary">平均時給:</label>
+    <input type="text" id="salary" name="salary" required>
+    <br></br>
+    <label for="access">営業時間:</label>
+    <input type="text" id="business_time" name="business_time" required>
+    <br><br>
+    <label for="op_time">定休日:</label>
+    <input type="text" id="holiday" name="holiday" required>
     <br><br>
     <input type="submit" value="登録する">
 </form>
